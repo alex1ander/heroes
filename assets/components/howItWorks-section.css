@@ -1,0 +1,184 @@
+/* How it works Section */
+.how-it-works {
+    padding: 100px 0;
+    background: #FFFFFF;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.how-it-works-content {
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    justify-content: center;
+    max-width: 1144px;
+    margin: 0 auto;
+}
+
+.phone-mockup {
+    flex-shrink: 0;
+}
+
+
+
+.steps {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    max-width: 517px;
+    position: relative;
+}
+
+.steps::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    height: 90%;
+    top: 0;
+    bottom: 64px;
+    width: 4px;
+    background: #FBF5F3;
+    z-index: 1;
+}
+
+.step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.step-icon {
+    width: 64px;
+    height: 64px;
+    background: #FBF5F3;
+    border-radius: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #3c3c3c;
+    margin-bottom: 4px;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.step-description {
+    font-size: 12px;
+    font-weight: 500;
+    color: #3b3b3b;
+    opacity: 0.6;
+    line-height: 1.2;
+    text-align: left;
+}
+
+/* How It Works Responsive */
+@media (max-width: 1024px) {
+    .how-it-works-content {
+        gap: 60px;
+        max-width: 900px;
+    }
+    
+    
+    .steps {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .how-it-works {
+        padding: 60px 0;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
+    .how-it-works-content {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+    
+    .qr-link {
+        font-size: 7px;
+        padding: 3px 5px;
+    }
+    
+    .steps {
+        max-width: 100%;
+        gap: 32px;
+    }
+    
+    .steps::before {
+        left: 22px; 
+    }
+    
+    
+    .step-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .step-title {
+        font-size: 14px;
+    }
+    
+    .step-description {
+        font-size: 11px;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .how-it-works {
+        padding: 40px 0;
+    }
+
+    
+    .qr-code {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .qr-link {
+        font-size: 6px;
+        padding: 2px 4px;
+    }
+    
+    .steps {
+        gap: 24px;
+    }
+    
+    .step-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .steps::before {
+        left: 18px; 
+    }
+    
+    .step-title {
+        font-size: 13px;
+    }
+    
+    .step-description {
+        font-size: 10px;
+        max-width: 200px;
+    }
+}

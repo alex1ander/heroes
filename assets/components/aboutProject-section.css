@@ -1,0 +1,41 @@
+/* About Project Section */
+.about-project {
+    padding: 100px 0;
+    position: relative;
+}
+
+.about-content {
+    text-align: center;
+    margin-bottom: 50px;
+    max-width: 640px;
+    margin: auto;
+}
+
+.about-collage{
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-collage img{
+    max-width: 100%;
+}
+
+
+/* About Project Responsive */
+@media (max-width: 768px) {
+    .about-project {
+        padding: 60px 0;
+    }
+    
+    .about-content {
+        margin-bottom: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-project {
+        padding: 40px 0;
+    }
+}

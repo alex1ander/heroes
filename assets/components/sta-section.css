@@ -1,0 +1,36 @@
+/* CTA Section */
+.cta {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.cta .section-title {
+    margin-bottom: 16px;
+}
+
+.cta .section-subtitle {
+    margin-bottom: 24px;
+}
+
+/* CTA Section Responsive */
+@media (max-width: 768px) {
+    .cta {
+        padding: 60px 0;
+    }
+    
+    .cta-content {
+        max-width: 100%;
+        padding: 0 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cta {
+        padding: 40px 0;
+    }
+}

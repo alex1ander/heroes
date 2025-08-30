@@ -1,0 +1,142 @@
+/* Support Section */
+.support{
+    padding: 100px 0;
+}
+
+
+.stats-block{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 896px;
+    margin: auto;
+}
+
+.qr-code{
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.support-text {
+    flex: 1;
+    max-width: 455px;
+}
+
+.support-text .section-title {
+    text-align: left;
+    margin-bottom: 16px;
+}
+
+.support-text .section-subtitle {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+
+
+/* Stats Section */
+
+
+.stats-content {
+    background: #FBF5F3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    max-width: 944px;
+    width: 100%;
+    padding: 36px 24px;
+    border-radius: 8px;
+    margin: auto;
+}
+
+.stats-number {
+    background: #FFFFFF;
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-size: 28px;
+    font-weight: 400;
+    color: #333333;
+    white-space: nowrap;
+}
+
+.stats-description {
+    font-size: 16px;
+    font-weight: 400;
+    color: #828282;
+    line-height: 1.4;
+    max-width: 440px;
+}
+
+/* Support Section Responsive */
+@media (max-width: 1024px) {
+
+
+    .stats-content {
+        gap: 32px;
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 768px) {
+    .support {
+        padding: 60px 0;
+    }
+    
+    
+    
+    .support-text {
+        max-width: 100%;
+    }
+    
+    .support-text .section-title {
+        text-align: center;
+    }
+    
+    .support-text .section-subtitle {
+        text-align: center;
+    }
+        
+    .stats-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .stats-number {
+        font-size: 24px;
+        align-self: center;
+    }
+    
+    .stats-description {
+        max-width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .support {
+        padding: 40px 0;
+    }
+
+
+    
+    .stats-content {
+        gap: 16px;
+    }
+    
+    .stats-number {
+        font-size: 20px;
+        padding: 6px 12px;
+    }
+    
+    .stats-description {
+        font-size: 14px;
+    }
+}
