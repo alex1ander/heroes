@@ -7,19 +7,19 @@
                     <div class="swiper main-gallery-swiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/roman-main.jpg" alt="Роман Ратушний" class="main-image">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=face" alt="Роман Ратушний" class="main-image">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/roman-2.jpg" alt="Роман Ратушний" class="main-image">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=600&fit=crop&crop=face" alt="Роман Ратушний" class="main-image">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/roman-3.jpg" alt="Роман Ратушний" class="main-image">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=600&fit=crop&crop=face" alt="Роман Ратушний" class="main-image">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/roman-4.jpg" alt="Роман Ратушний" class="main-image">
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=600&fit=crop&crop=face" alt="Роман Ратушний" class="main-image">
                             </div>
                             <div class="swiper-slide">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/roman-5.jpg" alt="Роман Ратушний" class="main-image">
+                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=600&fit=crop&crop=face" alt="Роман Ратушний" class="main-image">
                             </div>
                         </div>
                         <!-- Navigation buttons -->
@@ -31,19 +31,19 @@
                 <!-- Thumbnail Gallery -->
                 <div class="thumbnail-gallery">
                     <div class="thumbnail active" data-slide="0">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/roman-main.jpg" alt="Thumbnail 1">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=100&fit=crop&crop=face" alt="Thumbnail 1">
                     </div>
                     <div class="thumbnail" data-slide="1">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/roman-2.jpg" alt="Thumbnail 2">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=100&fit=crop&crop=face" alt="Thumbnail 2">
                     </div>
                     <div class="thumbnail" data-slide="2">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/roman-3.jpg" alt="Thumbnail 3">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=100&fit=crop&crop=face" alt="Thumbnail 3">
                     </div>
                     <div class="thumbnail" data-slide="3">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/roman-4.jpg" alt="Thumbnail 4">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=100&fit=crop&crop=face" alt="Thumbnail 4">
                     </div>
                     <div class="thumbnail" data-slide="4">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/roman-5.jpg" alt="Thumbnail 5">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=100&fit=crop&crop=face" alt="Thumbnail 5">
                     </div>
                 </div>
             </div>
@@ -65,6 +65,11 @@
 
                 <!-- Person Details -->
                 <div class="person-details">
+                    <div class="details-line">
+                        <div class="start-dot"></div>
+                        <div class="middle-line"></div>
+                        <div class="end-dot"></div>
+                    </div>
                     <div class="details-group">
                         <div class="detail-item">
                             <span class="detail-value">25 років</span>
@@ -78,8 +83,6 @@
                             <span class="detail-value">Київська обл.</span>
                             <span class="detail-label">місце загибелі</span>
                         </div>
-                    </div>
-                    <div class="details-group">
                         <div class="detail-item">
                             <span class="detail-value">Києв</span>
                             <span class="detail-label">місто народження</span>
@@ -107,3 +110,46 @@
     </div>
 </section>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const galleryEl = document.querySelector('.main-gallery-swiper');
+  if (!galleryEl) return;
+
+  // Сначала собираем превью
+  const thumbnails = Array.from(document.querySelectorAll('.thumbnail'));
+
+  function updateActiveThumbnail(activeIndex) {
+    thumbnails.forEach((thumb, i) => {
+      thumb.classList.toggle('active', i === activeIndex);
+    });
+  }
+
+  // Потом инициализируем Swiper
+  const mainSwiper = new Swiper(galleryEl, {
+    spaceBetween: 10,
+    loop: true,
+    speed: 600,
+    navigation: {
+      nextEl: '.main-gallery .swiper-button-next',
+      prevEl: '.main-gallery .swiper-button-prev',
+    },
+    on: {
+      init(swiper) {
+        updateActiveThumbnail(swiper.realIndex);
+      },
+      slideChange(swiper) {
+        updateActiveThumbnail(swiper.realIndex);
+      }
+    }
+  });
+
+  // Обработчики кликов по превью
+  thumbnails.forEach((thumb, index) => {
+    thumb.addEventListener('click', () => {
+      mainSwiper.slideToLoop(index);
+      updateActiveThumbnail(index);
+    });
+  });
+});
+
+</script>

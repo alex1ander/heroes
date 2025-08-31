@@ -148,40 +148,6 @@ function initSwipers() {
         });
     }
 
-    // Person Gallery Swiper
-    const personGallerySwiper = document.querySelector('.main-gallery-swiper');
-    if (personGallerySwiper) {
-        const mainSwiper = new Swiper('.main-gallery-swiper', {
-            spaceBetween: 10,
-            navigation: {
-                nextEl: '.main-gallery .swiper-button-next',
-                prevEl: '.main-gallery .swiper-button-prev',
-            },
-            loop: true,
-            effect: 'slide',
-            speed: 600,
-            on: {
-                slideChange: function() {
-                    updateActiveThumbnail(this.realIndex);
-                }
-            }
-        });
-
-        // Thumbnail click handlers
-        const thumbnails = document.querySelectorAll('.thumbnail');
-        thumbnails.forEach((thumbnail, index) => {
-            thumbnail.addEventListener('click', function() {
-                mainSwiper.slideToLoop(index);
-                updateActiveThumbnail(index);
-            });
-        });
-
-        function updateActiveThumbnail(activeIndex) {
-            thumbnails.forEach((thumb, index) => {
-                thumb.classList.toggle('active', index === activeIndex);
-            });
-        }
-    }
 }
 
 

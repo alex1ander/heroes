@@ -685,16 +685,6 @@ body.menu-open {
     background: linear-gradient(90deg, #323131 0%, transparent 100%);
 }
 
-.details-group {
-    display: flex;
-    gap: 36px;
-    margin-bottom: 24px;
-}
-
-.details-group:last-child {
-    margin-bottom: 0;
-}
-
 .detail-item {
     display: flex;
     flex-direction: column;
@@ -1201,10 +1191,6 @@ body.menu-open {
         display: none;
     }
     
-    .details-group {
-        flex-direction: column;
-        gap: 16px;
-    }
     
     .cta-content h2,
     .other-stories h2,

@@ -30,16 +30,35 @@
     height: 100%;
 }
 
+.main-gallery-swiper .swiper-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
 .main-gallery-swiper .swiper-slide {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
 .main-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.main-gallery .swiper-button-prev,
+.main-gallery .swiper-button-next {
+    width: 36px;
+    height: 36px;
+    margin-top: -18px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(2px);
+    transition: all 0.3s ease;
+    z-index: 10;
 }
 
 .swiper-button-prev,
@@ -51,13 +70,18 @@
     background: rgba(255, 255, 255, 0.45);
     backdrop-filter: blur(2px);
     transition: all 0.3s ease;
+    z-index: 10;
 }
 
+.main-gallery .swiper-button-prev:hover,
+.main-gallery .swiper-button-next:hover,
 .swiper-button-prev:hover,
 .swiper-button-next:hover {
     background: rgba(255, 255, 255, 0.7);
 }
 
+.main-gallery .swiper-button-prev::after,
+.main-gallery .swiper-button-next::after,
 .swiper-button-prev::after,
 .swiper-button-next::after {
     font-size: 16px;
@@ -148,29 +172,42 @@
 
 .person-details {
     margin-bottom: 36px;
-    padding-left: 99px;
     position: relative;
+    display: flex;
+    gap: 20px;
 }
 
-.person-details::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%) rotate(270deg);
-    width: 99px;
+.details-line{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.details-line .start-dot{
+    background: #DC0909;
+    border-radius: 100%;
     height: 8px;
-    background: linear-gradient(90deg, #323131 0%, transparent 100%);
+    width: 8px;
+}
+.details-line .end-dot{
+    background: #DC0909;
+    border-radius: 100%;
+    height: 8px;
+    width: 8px;
+}
+
+.details-line .middle-line{
+    background: #DC0909;
+    height: 100%;
+    width: 2px;
 }
 
 .details-group {
-    display: flex;
-    gap: 36px;
-    margin-bottom: 24px;
-}
-
-.details-group:last-child {
-    margin-bottom: 0;
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: min-content min-content; 
+    grid-template-rows: min-content min-content; 
+    gap: 36px; 
 }
 
 .detail-item {
@@ -442,12 +479,6 @@
         height: 400px;
     }
     
-    .person-header {
-        flex-direction: column;
-        gap: 16px;
-        align-items: flex-start;
-    }
-    
     .person-title h1 {
         font-size: 28px;
     }
@@ -462,9 +493,7 @@
     }
     
     .details-group {
-        flex-direction: column;
         gap: 16px;
-        margin-bottom: 16px;
     }
     
     .person-stories {
@@ -589,3 +618,4 @@
         font-size: 14px;
     }
 }
+
