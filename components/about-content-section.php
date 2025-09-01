@@ -1,47 +1,46 @@
+<?php 
+$gallery = get_field('gallery');
+?>
+
 <!-- About Content Section -->
 <section class="about-content-section">
     <div class="container">
+        <?php if($gallery): ?>
         <div class="about-content-header">
-            <h2 class="about-content-title">Не просто історії. Це — пам'ять, яка має обличчя.</h2>
+            <?php if($gallery['title']): ?>
+            <h2 class="about-content-title"><?php echo wp_kses_post($gallery['title']); ?></h2>
+            <?php endif; ?>
+            
+            <?php if($gallery['description']): ?>
             <p class="about-content-text">
-                Наш проєкт — це цифрова книга пам'яті. Альбом, де обличчя, імена та історії тих, чиє життя обірвали злочинні дії російської федерації, назавжди залишаються серед нас. Ми фіксуємо не лише факти — ми зберігаємо присутність. Щоб не забули. Щоб жили у словах, у світлинах, у нашій пам'яті.
+                <?php echo wp_kses_post($gallery['description']); ?>
             </p>
+            <?php endif; ?>
         </div>
+        <?php endif; ?>
         
+        <?php if($gallery && $gallery['photos']): ?>
         <div class="about-gallery">
             <!-- Desktop Grid -->
             <div class="about-gallery-grid">
+                <?php foreach($gallery['photos'] as $photo): ?>
                 <div class="about-gallery-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/uploads/hero1.png" alt="Пам'ять героїв" loading="lazy">
+                    <img src="<?php echo esc_url($photo); ?>" alt="Галерея" loading="lazy">
                 </div>
-                <div class="about-gallery-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/uploads/heroes.png" alt="Герої України" loading="lazy">
-                </div>
-                <div class="about-gallery-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/uploads/people1.png" alt="Незабутні люди" loading="lazy">
-                </div>
-                <div class="about-gallery-item">
-                    <img src="<?php echo get_template_directory_uri(); ?>/uploads/people2.png" alt="Жертви війни" loading="lazy">
-                </div>
+                <?php endforeach; ?>
             </div>
             
             <!-- Mobile Swiper -->
             <div class="about-gallery-swiper swiper">
                 <div class="swiper-wrapper">
+                    <?php foreach($gallery['photos'] as $photo): ?>
                     <div class="swiper-slide">
-                        <img src="<?php echo get_template_directory_uri(); ?>/uploads/hero1.png" alt="Пам'ять героїв" loading="lazy">
+                        <img src="<?php echo esc_url($photo); ?>" alt="Галерея" loading="lazy">
                     </div>
-                    <div class="swiper-slide">
-                        <img src="<?php echo get_template_directory_uri(); ?>/uploads/heroes.png" alt="Герої України" loading="lazy">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?php echo get_template_directory_uri(); ?>/uploads/people1.png" alt="Незабутні люди" loading="lazy">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="<?php echo get_template_directory_uri(); ?>/uploads/people2.png" alt="Жертви війни" loading="lazy">
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
+        <?php endif; ?>
     </div>
 </section>

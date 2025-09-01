@@ -1,24 +1,43 @@
+<?php 
+$supporters = get_field('supported-about-us');
+?>
+
 <!-- Supporters Section -->
 <section class="supporters-section">
     <div class="container">
         <h2 class="section-title">Нас підтримують</h2>
+        
+        <?php if($supporters): ?>
         <div class="supporters-grid">
-            <div class="supporters-row">
+            <?php 
+            $i = 0;
+            $count = count($supporters);
+            foreach($supporters as $supporter_group): 
+                if($i % 2 == 0): ?>
+                    <div class="supporters-row"><!-- открываем ряд -->
+                <?php endif; ?>
+                
+                <?php if($supporter_group['image']): ?>
                 <div class="supporter-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/768px-JavaScript-logo.png" alt="Партнер 1" class="supporter-logo">
+                    <img src="<?php echo esc_url($supporter_group['image']['url']); ?>" alt="<?php echo esc_attr($supporter_group['image']['alt']); ?>" class="supporter-logo">
                 </div>
-                <div class="supporter-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" alt="Партнер 2" class="supporter-logo">
-                </div>
-            </div>
-            <div class="supporters-row">
-                <div class="supporter-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" alt="Партнер 3" class="supporter-logo">
-                </div>
-                <div class="supporter-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png" alt="Партнер 4" class="supporter-logo">
-                </div>
-            </div>
+                <?php endif; ?>
+                
+                <?php 
+                $i++;
+                // если закрыли пару
+                if($i % 2 == 0): ?>
+                    </div><!-- закрываем ряд -->
+                <?php endif; ?>
+            <?php endforeach; ?>
+            
+            <?php 
+            // если элементов нечетное количество — добавляем пустую карточку
+            if($count % 2 != 0): ?>
+                <div class="supporter-card empty"></div>
+                </div><!-- закрываем ряд -->
+            <?php endif; ?>
         </div>
+        <?php endif; ?>
     </div>
 </section>

@@ -24,6 +24,9 @@
     justify-content: center;
     height: 192px;
 }
+.supporter-card.empty{
+    opacity: 0;
+}
 
 .supporter-logo {
     max-width: 229px;
