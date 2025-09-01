@@ -43,22 +43,6 @@ get_header(); ?>
             margin-right: auto;
         }
 
-        .btn-secondary {
-            background-color: #fbf5f3;
-            color: #333333;
-            padding: 12px 32px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn-secondary:hover {
-            background-color: #f0e9e7;
-        }
-
         /* About Section */
         .about-section {
             padding: 152px 0;

@@ -118,3 +118,113 @@ function nezabutny_security_improvements() {
     remove_action('wp_head', 'feed_links_extra', 3);
 }
 add_action('init', 'nezabutny_security_improvements');
+
+// AJAX search functionality
+function nezabutny_search_posts() {
+    // Verify nonce for security
+    if (!wp_verify_nonce($_POST['nonce'], 'search_nonce')) {
+        wp_die('Security check failed');
+    }
+    
+    $query = sanitize_text_field($_POST['query']);
+    
+    if (empty($query) || strlen($query) < 2) {
+        wp_send_json_error('Query too short');
+        return;
+    }
+    
+    // Search only in posts (not pages or other post types)
+    $args = array(
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => 4, // Limit to 4 results as shown in design
+        's' => $query,
+        'meta_query' => array(
+            'relation' => 'OR',
+            array(
+                'key' => 'person_name',
+                'value' => $query,
+                'compare' => 'LIKE'
+            ),
+            array(
+                'key' => 'person_profession',
+                'value' => $query,
+                'compare' => 'LIKE'
+            )
+        )
+    );
+    
+    $search_query = new WP_Query($args);
+    $results = array();
+    
+    if ($search_query->have_posts()) {
+        while ($search_query->have_posts()) {
+            $search_query->the_post();
+            
+            // Get custom fields
+            $person_name = get_post_meta(get_the_ID(), 'person_name', true);
+            $person_profession = get_post_meta(get_the_ID(), 'person_profession', true);
+            
+            // Use person name if available, otherwise use post title
+            $title = !empty($person_name) ? $person_name : get_the_title();
+            $profession = !empty($person_profession) ? $person_profession : get_the_excerpt();
+            
+            // Get thumbnail
+            $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+            
+            $results[] = array(
+                'id' => get_the_ID(),
+                'title' => $title,
+                'excerpt' => $profession,
+                'url' => get_permalink(),
+                'thumbnail' => $thumbnail ? $thumbnail : ''
+            );
+        }
+        wp_reset_postdata();
+    }
+    
+    // If no results found in custom fields, try regular post search
+    if (empty($results)) {
+        $fallback_args = array(
+            'post_type' => 'post',
+            'post_status' => 'publish',
+            'posts_per_page' => 4,
+            's' => $query
+        );
+        
+        $fallback_query = new WP_Query($fallback_args);
+        
+        if ($fallback_query->have_posts()) {
+            while ($fallback_query->have_posts()) {
+                $fallback_query->the_post();
+                
+                $thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'medium');
+                
+                $results[] = array(
+                    'id' => get_the_ID(),
+                    'title' => get_the_title(),
+                    'excerpt' => get_the_excerpt(),
+                    'url' => get_permalink(),
+                    'thumbnail' => $thumbnail ? $thumbnail : ''
+                );
+            }
+            wp_reset_postdata();
+        }
+    }
+    
+    wp_send_json_success($results);
+}
+
+// Register AJAX handlers for both logged in and non-logged in users
+add_action('wp_ajax_search_posts', 'nezabutny_search_posts');
+add_action('wp_ajax_nopriv_search_posts', 'nezabutny_search_posts');
+
+
+
+add_action( 'wp_footer', 'theme_add_svg_sprite', 20 );
+function theme_add_svg_sprite() {
+    $sprite_path = get_template_directory() . '/assets/icons/sprite.svg';
+    if ( file_exists( $sprite_path ) ) {
+        echo file_get_contents( $sprite_path );
+    }
+}

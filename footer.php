@@ -3,7 +3,7 @@
         <div class="footer-content">
             <div class="footer-left">
                 <div class="footer-logo">
-                    <img src="images/trident-large.svg" alt="Трезубець" class="footer-logo-icon">
+                    <svg width="44" height="72"><use xlink:href="#trident-big"></use></svg>
                     <span class="footer-logo-text">НЕЗАБУТІ</span>
                 </div>
                 <p class="footer-description">

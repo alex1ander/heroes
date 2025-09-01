@@ -9,10 +9,6 @@
     height: 100%;
 }
 
-.hero-swiper .swiper-slide {
-    height: 681px;
-}
-
 .hero-bg {
     width: 100%;
     height: 100%;
@@ -23,27 +19,24 @@
     background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
     background-size: cover;
     background-position: center;
+
+    aspect-ratio: 16 / 9;
 }
 
-.hero-bg-1 {
-    background-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%),
-                      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="681" fill="none"><rect width="1440" height="681" fill="%23556B8D"/></svg>');
-}
-
-.hero-bg-2 {
-    background-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%),
-                      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="681" fill="none"><rect width="1440" height="681" fill="%23708B75"/></svg>');
-}
-
-.hero-bg-3 {
-    background-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%),
-                      url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="681" fill="none"><rect width="1440" height="681" fill="%23A0616A"/></svg>');
+.hero-bg .bg-image{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .hero-content {
     width: 100%;
     max-width: 1440px;
-    padding: 0 32px;
+    padding: 32px;
     position: relative;
     height: 100%;
     display: flex;
@@ -53,8 +46,8 @@
 
 .hero-person {
     position: absolute;
-    left: 32px;
-    bottom: 196px;
+    right: 32px;
+    bottom: 32px;
     color: #FFFFFF;
 }
 
@@ -75,8 +68,8 @@
 
 .hero-main {
     position: absolute;
-    right: 32px;
-    bottom: 196px;
+    left: 32px;
+    bottom: 32px;
     width: 564px;
     color: #FFFFFF;
 }
@@ -113,22 +106,16 @@
 
 @media (max-width: 768px) {
     .hero {
-        height: 500px;
+        width: 100%;
         margin-top: 64px;
     }
-    
-    .hero-swiper .swiper-slide {
-        height: 500px;
-    }
-    
-    .hero-content {
-        padding: 0 16px;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
+
+    .hero-bg{
+        aspect-ratio: 9 / 16;
     }
     
     .hero-person {
+        text-align: center;
         position: static;
         margin-bottom: 24px;
         order: 1;
@@ -163,14 +150,7 @@
 }
 
 @media (max-width: 480px) {
-    .hero {
-        height: 450px;
-    }
-    
-    .hero-swiper .swiper-slide {
-        height: 450px;
-    }
-    
+
     .hero-title {
         font-size: 24px;
     }
