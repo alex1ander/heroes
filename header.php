@@ -13,6 +13,16 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/names-section.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/support-section.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/header.css">
+
+
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/about-content-section.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/about-content-section.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/goals-section.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/advisers-section.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/about-supporters-section.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/about-media-section.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/about-faq-section.css">
+
     
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Swiper CSS -->
@@ -74,7 +84,7 @@
                     <div class="mobile-menu">
                         <div class="mobile-menu-header">
                             <div class="logo">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/trident.svg" alt="Трезубець" class="logo-icon">
+                                <svg width="18" height="30"><use xlink:href="#trident"></use></svg>
                                 <span class="logo-text">НЕЗАБУТІ</span>
                             </div>
                             <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Закрыть меню">

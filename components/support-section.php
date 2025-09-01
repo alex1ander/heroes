@@ -3,7 +3,7 @@
 
         <div class="stats-block">
 
-            <div class="stats-content">
+            <div class="stats-content bg-pink">
                 
                 <div class="qr-code">
                     <svg width="143" height="144" viewBox="0 0 143 144" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -21,7 +21,7 @@
 
             </div>
 
-            <div class="stats-content">
+            <div class="stats-content bg-pink">
                 <div class="stats-number">230 930 грн</div>
                 <p class="stats-description">Зібрано та передано людям, чиї близькі загинули на війні</p>
             </div>

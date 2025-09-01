@@ -3,6 +3,22 @@
  * Nezabutny Theme Functions
  */
 
+// Создаём страницу опций "Настройки сайта"
+add_action('acf/init', function () {
+    if( function_exists('acf_add_options_page') ) {
+        acf_add_options_page([
+            'page_title'  => 'Інформаційні блоки',
+            'menu_title'  => 'Інформаційні блоки',
+            'menu_slug'   => 'site-settings',
+            'capability'  => 'manage_options', // кто видит
+            'redirect'    => false,
+            'position'    => 59,               // рядом с Настройками/Плагинами
+            'icon_url'    => 'dashicons-admin-generic',
+        ]);
+    }
+});
+
+
 // Theme setup
 function nezabutny_theme_setup() {
     // Add theme support for post thumbnails
@@ -40,6 +56,15 @@ function nezabutny_enqueue_scripts() {
     wp_enqueue_style('nezabutny-names', get_template_directory_uri() . '/assets/components/names-section.css', array(), '1.0.0');
     wp_enqueue_style('nezabutny-support', get_template_directory_uri() . '/assets/components/support-section.css', array(), '1.0.0');
     wp_enqueue_style('nezabutny-person', get_template_directory_uri() . '/assets/components/person-section.css', array(), '1.0.0');
+    
+    // Enqueue About page component styles
+    wp_enqueue_style('nezabutny-about-hero', get_template_directory_uri() . '/assets/components/about-hero-section.css', array(), '1.0.0');
+    wp_enqueue_style('nezabutny-about-content', get_template_directory_uri() . '/assets/components/about-content-section.css', array(), '1.0.0');
+    wp_enqueue_style('nezabutny-goals', get_template_directory_uri() . '/assets/components/goals-section.css', array(), '1.0.0');
+    wp_enqueue_style('nezabutny-advisers', get_template_directory_uri() . '/assets/components/advisers-section.css', array(), '1.0.0');
+    wp_enqueue_style('nezabutny-about-supporters', get_template_directory_uri() . '/assets/components/about-supporters-section.css', array(), '1.0.0');
+    wp_enqueue_style('nezabutny-about-media', get_template_directory_uri() . '/assets/components/about-media-section.css', array(), '1.0.0');
+    wp_enqueue_style('nezabutny-about-faq', get_template_directory_uri() . '/assets/components/about-faq-section.css', array(), '1.0.0');
     
     // Enqueue Google Fonts
     wp_enqueue_style('nezabutny-fonts', 'https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap', array(), null);
@@ -228,3 +253,4 @@ function theme_add_svg_sprite() {
         echo file_get_contents( $sprite_path );
     }
 }
+

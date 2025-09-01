@@ -12,15 +12,15 @@
                 </p>
                 <div class="social-links">
                     <a href="#" class="social-link social-hover">
-                        <img src="images/instagram.svg" alt="Instagram">
+                        <svg width="24" height="24"><use xlink:href="#instagram"></use></svg>
                         <span>Instagram</span>
                     </a>
                     <a href="#" class="social-link social-hover">
-                        <img src="images/facebook.svg" alt="Facebook">
+                         <svg width="24" height="25"><use xlink:href="#facebook"></use></svg>
                         <span>Facebook</span>
                     </a>
                     <a href="#" class="social-link social-hover">
-                        <img src="images/linkedin.svg" alt="LinkedIn">
+                        <svg width="24" height="24"><use xlink:href="#linkedin"></use></svg>
                         <span>LinkedIn</span>
                     </a>
                 </div>

@@ -144,6 +144,26 @@ function initSwipers() {
         });
     }
 
+    // About Gallery Swiper (mobile only)
+    const aboutGallerySwiper = document.querySelector('.about-gallery-swiper');
+    if (aboutGallerySwiper) {
+        new Swiper('.about-gallery-swiper', {
+            slidesPerView: 1.2,
+            spaceBetween: 8,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            effect: 'slide',
+            speed: 600,
+            touchRatio: 1,
+            touchAngle: 45,
+            grabCursor: true,
+        });
+    }
+
 }
 
 
@@ -198,6 +218,8 @@ function throttle(func, limit) {
         }
     }
 }
+
+
 
 /**
  * Add touch support for mobile devices
