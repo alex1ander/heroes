@@ -11,10 +11,9 @@ $donats = get_field('donats');
 $details = get_field('details');
 $detailsPP = get_field('details-pp');
 
-
-echo '<pre>';
-print_r($details);
-echo '</pre>';
+// echo '<pre>';
+// print_r($details);
+// echo '</pre>';
 ?>
 
 

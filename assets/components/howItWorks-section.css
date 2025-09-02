@@ -64,6 +64,11 @@
     z-index: 2;
 }
 
+.step-icon img {
+    width: 50%;
+    height: 50%;
+}
+
 .step-content {
     flex: 1;
 }

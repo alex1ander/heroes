@@ -1,3 +1,10 @@
+<?php 
+$facebook = get_field('facebook', 'option');
+$instagram = get_field('instagram', 'option');
+$linkedin = get_field('linkedin', 'option');
+?>
+
+
 <footer class="footer">
     <div class="container">
         <div class="footer-content">
@@ -11,18 +18,24 @@
                     Кожен заслуговує бути згаданим.
                 </p>
                 <div class="social-links">
+                    <?php if(isset($instagram) && !empty($instagram)):?>
                     <a href="#" class="social-link social-hover">
                         <svg width="24" height="24"><use xlink:href="#instagram"></use></svg>
                         <span>Instagram</span>
                     </a>
+                    <?php endif; ?>
+                    <?php if(isset($facebook) && !empty($facebook)):?>     
                     <a href="#" class="social-link social-hover">
                          <svg width="24" height="25"><use xlink:href="#facebook"></use></svg>
                         <span>Facebook</span>
                     </a>
+                    <?php endif; ?>
+                    <?php if(isset($linkedin) && !empty($linkedin)):?>
                     <a href="#" class="social-link social-hover">
                         <svg width="24" height="24"><use xlink:href="#linkedin"></use></svg>
                         <span>LinkedIn</span>
                     </a>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="footer-right">

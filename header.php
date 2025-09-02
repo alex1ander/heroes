@@ -35,10 +35,10 @@
         <div class="container">
             <div class="header-content">
                 <div class="header-left">
-                    <div class="logo">
+                    <a href="/" class="logo">
                         <svg width="18" height="30"><use xlink:href="#trident"></use></svg>
                         <span class="logo-text">НЕЗАБУТІ</span>
-                    </div>
+                    </a>
                     <nav class="nav">
                         <a href="#" class="nav-link">Про проєкт</a>
                         <a href="#" class="nav-link">Як це працює</a>
