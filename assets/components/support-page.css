@@ -1,0 +1,303 @@
+.support-container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 98px 24px 180px;
+        }
+
+        .support-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #333333;
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 79px;
+            line-height: 1.2;
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            margin-bottom: 56px;
+        }
+
+        .tab-button {
+            flex: 1;
+            max-width: 304px;
+            padding: 12px 16px;
+            background-color: #fffffa;
+            border: 1px solid #e0e0e0;
+            color: #333333;
+            font-family: 'Manrope', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:first-child {
+            border-radius: 8px 0 0 8px;
+            border-right: none;
+        }
+
+        .tab-button:last-child {
+            border-radius: 0 8px 8px 0;
+            border-left: none;
+        }
+
+        .tab-button.active {
+            background-color: #323131;
+            color: white;
+            border-color: #323131;
+        }
+
+        .tab-button:hover:not(.active) {
+            background-color: #f5f5f5;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Card Payment Tab */
+        .payment-form {
+            max-width: 468px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 36px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .form-field {
+            background-color: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            padding: 12px 16px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 14px;
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.03);
+            flex: 1;
+        }
+
+        .form-field::placeholder {
+            color: #333333;
+            opacity: 0.6;
+        }
+
+        .currency-field {
+            width: 83px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+        }
+
+        .quick-amounts {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .amount-button {
+            background-color: #fbf5f3;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 4px;
+            width: 110px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            color: #333333;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .amount-button:hover {
+            background-color: #f0e9e7;
+        }
+
+        .payment-button {
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 16px;
+            width: 100%;
+            font-family: 'Manrope', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .card-pay-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 16px;
+            border-top: 1px solid #e0e0e0;
+            color: #333333;
+            font-weight: 500;
+        }
+
+        /* Bank Transfer Tab */
+        .bank-accounts {
+            max-width: 912px;
+            margin: 0 auto;
+        }
+
+        .bank-account {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .bank-account:last-child {
+            border-bottom: none;
+        }
+
+        .account-info {
+            flex: 1;
+        }
+
+        .account-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #3b3b3b;
+            opacity: 0.6;
+            margin-bottom: 4px;
+        }
+
+        .account-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #3c3c3c;
+        }
+
+        .copy-button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Manrope', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #3b3b3b;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .copy-button:hover {
+            opacity: 1;
+        }
+
+        .copy-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* PayPal Tab */
+        .paypal-account {
+            max-width: 912px;
+            margin: 0 auto;
+            padding: 24px 0;
+        }
+
+        /* Copy feedback */
+        .copy-feedback {
+            position: fixed;
+            top: 20%;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 14px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .copy-feedback.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .support-container {
+                padding: 60px 16px 0;
+            }
+
+            .support-title {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+
+            .tab-navigation {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .tab-button {
+                max-width: none;
+                border-radius: 0 !important;
+                border-right: 1px solid #e0e0e0;
+                border-left: 1px solid #e0e0e0;
+            }
+
+            .tab-button:first-child {
+                border-radius: 8px 8px 0 0 !important;
+                border-bottom: none;
+            }
+
+            .tab-button:last-child {
+                border-radius: 0 0 8px 8px !important;
+                border-top: none;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .quick-amounts {
+                gap: 4px;
+            }
+
+            .amount-button {
+                width: calc(50% - 2px);
+            }
+
+            .bank-account {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+                padding: 20px 0;
+            }
+
+            .copy-button {
+                align-self: flex-end;
+            }
+        }

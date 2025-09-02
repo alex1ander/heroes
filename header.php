@@ -6,6 +6,7 @@
     <title><?php the_title() ?></title>
     <?php wp_head(); ?>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/support-page.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/hero-section.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/aboutProject-section.css">
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/assets/components/howItWorks-section.css">
