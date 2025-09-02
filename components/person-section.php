@@ -1,3 +1,15 @@
+
+<?php 
+$gallery = get_field('gallery');
+$details = get_field('details');
+$info = get_field('info');
+
+// echo '<pre>';
+// print_r($info);
+// echo '</pre>';
+?>
+
+
 <section class="person-detail">
     <div class="container">
         <div class="person-content">
@@ -6,21 +18,13 @@
                 <div class="main-gallery">
                     <div class="swiper main-gallery-swiper">
                         <div class="swiper-wrapper">
+
+                            <?php foreach($gallery as $image):?>
                             <div class="swiper-slide">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=face" alt="Роман Ратушний" class="main-image">
+                                <img src="<?= $image ?>" alt="" class="main-image">
                             </div>
-                            <div class="swiper-slide">
-                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=600&fit=crop&crop=face" alt="Роман Ратушний" class="main-image">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=600&fit=crop&crop=face" alt="Роман Ратушний" class="main-image">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=600&fit=crop&crop=face" alt="Роман Ратушний" class="main-image">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=600&fit=crop&crop=face" alt="Роман Ратушний" class="main-image">
-                            </div>
+                            <?php endforeach; ?>
+
                         </div>
                         <!-- Navigation buttons -->
                         <div class="swiper-button-prev"></div>
@@ -30,21 +34,11 @@
                 
                 <!-- Thumbnail Gallery -->
                 <div class="thumbnail-gallery">
-                    <div class="thumbnail active" data-slide="0">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=100&fit=crop&crop=face" alt="Thumbnail 1">
-                    </div>
-                    <div class="thumbnail" data-slide="1">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=100&fit=crop&crop=face" alt="Thumbnail 2">
-                    </div>
-                    <div class="thumbnail" data-slide="2">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=100&fit=crop&crop=face" alt="Thumbnail 3">
-                    </div>
-                    <div class="thumbnail" data-slide="3">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=100&fit=crop&crop=face" alt="Thumbnail 4">
-                    </div>
-                    <div class="thumbnail" data-slide="4">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=100&fit=crop&crop=face" alt="Thumbnail 5">
-                    </div>
+                    <?php foreach($gallery as $image):?>
+                        <div class="thumbnail">
+                            <img src="<?= $image ?>" alt="">
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -53,8 +47,8 @@
                 <!-- Person Header -->
                 <div class="person-header">
                     <div class="person-title">
-                        <h1>Роман Ратушний</h1>
-                        <p class="person-subtitle">громадський діяч, розвідник, 1997–2022</p>
+                        <h1><?php the_title() ?></h1>
+                        <p class="person-subtitle"><?= get_field('about-people_activity') ?></p>
                     </div>
                     <button class="share-btn" aria-label="Поделиться">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -71,39 +65,25 @@
                         <div class="end-dot"></div>
                     </div>
                     <div class="details-group">
+
+                        <?php foreach($details as $detail): ?>
                         <div class="detail-item">
-                            <span class="detail-value">25 років</span>
-                            <span class="detail-label">вік</span>
+                            <span class="detail-value"><?= $detail['value']?></span>
+                            <span class="detail-label"><?= $detail['label']?></span>
                         </div>
-                        <div class="detail-item">
-                            <span class="detail-value">19 червня 2022</span>
-                            <span class="detail-label">дата загибелі</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-value">Київська обл.</span>
-                            <span class="detail-label">місце загибелі</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-value">Києв</span>
-                            <span class="detail-label">місто народження</span>
-                        </div>
+                        <?php endforeach; ?>
+                  
                     </div>
                 </div>
 
                 <!-- Person Stories -->
                 <div class="person-stories">
+                    <?php foreach($info as $block): ?>           
                     <div class="story-card">
-                        <h3>Боротьба за Протасів Яр</h3>
-                        <p>Роман очолював ініціативу "Захистимо Протасів Яр", боровся проти незаконної забудови зелених зон Києва. Завдяки його активізму вдалося зберегти унікальну природну локацію для майбутніх поколінь.</p>
+                        <h3><?= $block['title']?></h3>
+                        <p><?= $block['description']?></p>
                     </div>
-                    <div class="story-card">
-                        <h3>Громадський активізм</h3>
-                        <p>Ще зі студентських років Роман брав активну участь у громадському житті. Організовував акції, протести, працював над вирішенням екологічних проблем міста. Був прикладом небайдужої, принципової молоді.</p>
-                    </div>
-                    <div class="story-card">
-                        <h3>Військова служба</h3>
-                        <p>З початком повномасштабної війни Роман пішов захищати Україну. Служив у розвідувальному підрозділі, виконував важливі завдання на передовій. Загинув під час виконання бойового завдання 19 червня 2022 року.</p>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
