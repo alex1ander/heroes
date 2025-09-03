@@ -4,7 +4,7 @@ $projectAdvisers = get_field('project_advisers');
 ?>
 
 <!-- Advisers Section -->
-<section class="advisers-section">
+<section id="advisers" class="advisers-section">
     <div class="container">
         <h2 class="section-title"><?= $projectAdvisers['title']?></h2>
         <div class="advisers-grid">

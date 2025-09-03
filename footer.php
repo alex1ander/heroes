@@ -42,26 +42,24 @@ $linkedin = get_field('linkedin', 'option');
                 <div class="contact-form">
                     <h3>Збережімо пам'ять разом</h3>
                     <p>Заповніть коротку форму —&nbsp;ми&nbsp;зв'яжемося&nbsp;з&nbsp;вами,&nbsp;щоб&nbsp;створити сторінку пам'яті&nbsp;про&nbsp;близьку людину.</p>
-                    <form class="form">
-                        <div class="form-row">
-                            <input type="text" placeholder="ПІБ" class="form-input form-focus-effect">
-                            <input type="tel" placeholder="+(380)-00-000-00-00" class="form-input form-focus-effect">
-                        </div>
-                        <textarea placeholder="Коментар" class="form-textarea form-focus-effect"></textarea>
-                        <button type="submit" class="form-submit btn-hover-effect">Надіслати заявку</button>
-                    </form>
+                    <?= do_shortcode('[contact-form-7 id="ec91b10" title="Контактна форма 1"]'); ?>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="footer-links">
-                <a href="#">Політика конфіденційності</a>
-                <a href="#">Правила користування</a>
+                <?php
+                $footer_menu = wp_get_nav_menu_items('Footer Menu');
+                if ($footer_menu) {
+                    foreach ($footer_menu as $menu_item) {
+                        echo '<a href="' . esc_url($menu_item->url) . '">' . esc_html($menu_item->title) . '</a>';
+                    }
+                }
+                ?>
             </div>
             <div class="developer-info">
                 <span>Розроблено - </span>
-                <img src="images/sofenty.svg" alt="Sofenty">
-                <span>Sofenty</span>
+                <a href="https://sofenty.com/" target="_blank"> <img src="<?php echo get_template_directory_uri(); ?>/uploads/sf.png" alt="Sofenty"></a>
             </div>
         </div>
     </div>

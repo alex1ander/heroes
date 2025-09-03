@@ -7,7 +7,7 @@ $howiItWorks = get_field('how-it-works');
 ?>
 
 
-<section class="how-it-works">
+<section id="how-it-works"  class="how-it-works">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title"><?= $howiItWorks['title'] ?></h2>

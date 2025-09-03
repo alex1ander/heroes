@@ -18,6 +18,8 @@ add_action('acf/init', function () {
     }
 });
 
+add_filter( 'wpcf7_autop_or_not', '__return_false' );
+
 
 // Theme setup
 function nezabutny_theme_setup() {
@@ -36,10 +38,12 @@ function nezabutny_theme_setup() {
     ));
     
     // Register navigation menus
-    register_nav_menus(array(
-        'main-menu' => __('Main Menu', 'nezabutny'),
-        'mobile-menu' => __('Mobile Menu', 'nezabutny'),
-    ));
+    register_nav_menus(
+        array(
+            'header-menu' => __( 'Header Menu' ),
+            'footer-menu' => __( 'Footer Menu' ),
+        )
+    );
 }
 add_action('after_setup_theme', 'nezabutny_theme_setup');
 
@@ -254,3 +258,79 @@ function theme_add_svg_sprite() {
     }
 }
 
+
+
+
+
+// В functions.php
+
+add_action('admin_post_nopriv_monopay_wallet_payment', 'monopay_wallet_payment');
+add_action('admin_post_monopay_wallet_payment', 'monopay_wallet_payment');
+
+function monopay_wallet_payment() {
+    if (!isset($_POST['amount']) || intval($_POST['amount']) <= 0) {
+        wp_die('Неверная сумма');
+    }
+
+    $amount = intval($_POST['amount']); // сумма в гривнах
+    $amountKopecks = $amount * 100;
+
+    // Данные для wallet/payment
+    $data = [
+        'cardToken' => '67XZtXdR4NpKU3', // пример токена, можно брать динамически
+        'amount' => $amountKopecks,
+        'ccy' => 980,
+        'redirectUrl' => 'https://example.com/your/website/result/page',
+        'webHookUrl' => 'https://example.com/mono/acquiring/webhook/' . uniqid(),
+        'merchantPaymInfo' => [
+            'reference' => uniqid(),
+            'destination' => 'Пожертвувати',
+            'comment' => 'Пожертвувати',
+            'customerEmails' => [],
+            'basketOrder' => [
+                [
+                    'name' => 'Пожертвувати',
+                    'qty' => 1,
+                    'sum' => $amountKopecks,
+                    'total' => $amountKopecks,
+                    'unit' => 'шт.',
+                    'code' => uniqid(),
+                ]
+            ]
+        ]
+    ];
+
+    $jsonData = json_encode($data);
+
+    $token = 'uMHMVzSuDoalMul-PoA20VQIlzQBnvo6OcT9T9EqXcaE';
+
+    $headers = [
+        'X-Token: ' . $token,
+        'Content-Type: application/json'
+    ];
+
+    $ch = curl_init('https://api.monobank.ua/api/merchant/wallet/payment');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+
+    $response = curl_exec($ch);
+    curl_close($ch);
+
+    $responseData = json_decode($response, true);
+
+    if (isset($responseData['paymentUrl'])) {
+        wp_redirect($responseData['paymentUrl']); // Перенаправление на оплату
+        exit;
+    } else {
+        wp_die('Ошибка создания платежа: ' . ($responseData['errorDescription'] ?? json_encode($responseData)));
+    }
+}
+
+
+add_action( 'pre_get_posts', function( $query ) {
+    if ( $query->is_search() && $query->is_main_query() && !is_admin() ) {
+        $query->set( 'posts_per_page', 16 );
+    }
+});

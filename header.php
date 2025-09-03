@@ -39,11 +39,15 @@
                         <svg width="18" height="30"><use xlink:href="#trident"></use></svg>
                         <span class="logo-text">НЕЗАБУТІ</span>
                     </a>
-                    <nav class="nav">
-                        <a href="#" class="nav-link">Про проєкт</a>
-                        <a href="#" class="nav-link">Як це працює</a>
-                        <a href="#" class="nav-link">Додати ім'я</a>
-                        <a href="#" class="nav-link">Історії життя</a>
+                   <nav class="nav">
+                        <?php
+                        $header_menu = wp_get_nav_menu_items('Header Menu');
+                        if ($header_menu) {
+                            foreach ($header_menu as $menu_item) {
+                                echo '<a href="' . esc_url($menu_item->url) . '" class="nav-link">' . esc_html($menu_item->title) . '</a>';
+                            }
+                        }
+                        ?>
                     </nav>
                 </div>
                 <div class="header-right">
@@ -71,7 +75,10 @@
                                 <path d="M4 6L8 10L12 6" stroke="#6B6B6B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </div> -->
-                        <button class="donate-btn btn-hover-effect">Пожертвувати</button>
+                        <?php 
+                        $headerButton = get_field('header_button','options');
+                        ?>
+                        <a href="<?= $headerButton['url'];?>" target="<?= $headerButton['target'];?>" class="btn-primary"><?= $headerButton['title'];?></a>
                     </div>
                     <!-- Burger Menu Button -->
                     <button class="burger-menu" id="burger-menu" aria-label="Открыть меню">
@@ -94,12 +101,16 @@
                                 </svg>
                             </button>
                         </div>
-                        <nav class="mobile-nav">
-                            <a href="#" class="mobile-nav-link">Про проєкт</a>
-                            <a href="#" class="mobile-nav-link">Як це працює</a>
-                            <a href="#" class="mobile-nav-link">Додати ім'я</a>
-                            <a href="#" class="mobile-nav-link">Історії життя</a>
-                        </nav>
+                         <nav class="mobile-nav">
+                        <?php
+                        $header_menu = wp_get_nav_menu_items('Header Menu');
+                        if ($header_menu) {
+                            foreach ($header_menu as $menu_item) {
+                                echo '<a href="' . esc_url($menu_item->url) . '" class="mobile-nav-link">' . esc_html($menu_item->title) . '</a>';
+                            }
+                        }
+                        ?>
+                    </nav>
                         <div class="mobile-menu-footer">
                           
                         </div>

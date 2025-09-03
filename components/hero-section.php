@@ -8,7 +8,7 @@ $heroSection = get_field('hero-section');
 
 
 
-<section class="hero">
+<section id="hero" class="hero">
     <div class="container">
         <div class="swiper hero-swiper">
             <div class="swiper-wrapper">

@@ -117,7 +117,7 @@ function initSwipers() {
     const namesSwiper = document.querySelector('.names-swiper');
     if (namesSwiper) {
         new Swiper('.names-swiper', {
-            slidesPerView: 1,
+            slidesPerView: 1.2,
             spaceBetween: 16,
             pagination: {
                 el: '.names-swiper .swiper-pagination',

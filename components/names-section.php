@@ -17,14 +17,16 @@
                     while ($names_query->have_posts()) : $names_query->the_post(); ?>
                         
                         <div class="swiper-slide">
-                            <div class="name-card">
+                            <a href="<?= get_permalink(); ?>" class="name-card">
                                 <div class="card-image">
                                     <img src="<?php echo esc_url( get_the_post_thumbnail_url( get_the_ID(), 'full' ) ); ?>" 
                                         alt="<?php echo esc_attr( get_the_title() ); ?>">
                                 </div>
 
                                 <div class="card-content">
-                                    <a href="<?= get_permalink(); ?>"><h3 class="card-name"><?php the_title(); ?></h3></a>
+                                    <div>
+                                        <h3 class="card-name"><?php the_title(); ?></h3>
+                                    </div>
                                         <p class="card-subtitle">
                                             <?php the_field('about-people_activity'); ?>
                                         </p>
@@ -33,12 +35,12 @@
                                             <?php echo wp_trim_words(get_field('about-people_description'), 25, '...'); ?>
                                         </p>
                                 </div>
-                                <a href="<?= get_permalink(); ?>" class="card-link">
+                                <div class="card-link">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <path d="M7 17l9.2-9.2M17 17V7H7" stroke="#fff" stroke-width="2"/>
                                     </svg>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                         </div>
 
                     <?php endwhile;
@@ -50,44 +52,3 @@
         </div>
     </div>
 </section>
-
-
-<script>
-    // Initialize Swiper for Names section
-    const namesSwiper = new Swiper('.names-swiper', {
-        slidesPerView: 'auto',
-        spaceBetween: 8,
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-        },
-        navigation: {
-            nextEl: '.names-swiper .swiper-button-next',
-            prevEl: '.names-swiper .swiper-button-prev',
-        },
-        pagination: {
-            el: '.names-swiper .swiper-pagination',
-            clickable: true,
-        },
-        loop: true,
-        freeMode: true,
-        breakpoints: {
-            320: {
-                slidesPerView: 1.2
-                spaceBetween: 8,
-                freeMode: true,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 16,
-                freeMode: false,
-            },
-            1200: {
-                slidesPerView: 3,
-                spaceBetween: 16,
-                freeMode: false,
-            }
-        }
-    });
-
-</script>

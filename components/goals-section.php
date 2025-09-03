@@ -3,7 +3,7 @@ $project_goals = get_field('project-goals');
 ?>
 
 <!-- Goals Section -->
-<section class="goals-section">
+<section id="goals" class="goals-section">
     <div class="container">
         <?php if($project_goals && $project_goals['title']): ?>
         <h2 class="section-title"><?php echo esc_html($project_goals['title']); ?></h2>

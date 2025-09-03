@@ -7,7 +7,7 @@ $aboutProject = get_field('about_project');
 ?>
 
 
-<section class="about-project">
+<section id="about-project" class="about-project">
         <div class="container">
             <div class="about-content">
                 <h2 class="section-title"><?= $aboutProject['title'];?></h2>

@@ -6,7 +6,7 @@ $sta = get_field('sta','options');
 // echo '</pre>';
 ?>
 
-<section class="cta">
+<section id="sta" class="cta">
         <div class="container">
             <div class="stats-content bg-pink">
                 <div class="cta-content">

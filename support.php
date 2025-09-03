@@ -36,37 +36,41 @@ $detailsPP = get_field('details-pp');
             </div>
 
             <!-- Card Payment Tab -->
-            <div id="card-payment" class="tab-content active">
-                <div class="payment-form">
-                    <div class="form-group">
-                        <div class="form-row">
-                            <input type="text" class="form-field" placeholder="Сума" id="amount-input">
-                            <div class="form-field currency-field">
-                                <span style="color: #828282; opacity: 0.6;">UAH</span>
-                                <span style="margin-left: auto;">▼</span>
+            <form method="POST" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+                <div id="card-payment" class="tab-content active">
+                    <div class="payment-form">
+                        <div class="form-group">
+                            <div class="form-row">
+                                <input type="text" name="amount" class="form-field" placeholder="Сума" id="amount-input">
+                                <div class="form-field currency-field">
+                                    <span style="color: #828282; opacity: 0.6;">UAH</span>
+                                    <span style="margin-left: auto;">▼</span>
+                                </div>
+                            </div>
+                            <div class="quick-amounts">
+                                <?php foreach ($donats as $donat): ?>
+                                    <button type="button" class="amount-button" onclick="setAmount(<?php echo esc_js($donat['uah']); ?>)">+<?php echo esc_html($donat['uah']); ?> UAH</button>
+                                <?php endforeach; ?>
                             </div>
                         </div>
-                        <div class="quick-amounts">
-                            <?php foreach ($donats as $donat): ?>
-                                <button class="amount-button" onclick="setAmount(<?php echo esc_js($donat['uah']); ?>)">+<?php echo esc_html($donat['uah']); ?> UAH</button>
-                            <?php endforeach; ?>
+                        
+                        <input type="hidden" name="action" value="monopay_create_invoice">
+
+                        <button type="submit" class="payment-button">
+                            <span style="background: white; padding: 4px 8px; border-radius: 4px; color: black; font-weight: bold;">mono</span>
+                            <span>PAY</span>
+                        </button>
+                        
+                        <div class="card-pay-info">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                <line x1="1" y1="10" x2="23" y2="10"/>
+                            </svg>
+                            <span>Оплатити картою</span>
                         </div>
                     </div>
-                    
-                    <button class="payment-button">
-                        <span style="background: white; padding: 4px 8px; border-radius: 4px; color: black; font-weight: bold;">mono</span>
-                        <span>PAY</span>
-                    </button>
-                    
-                    <div class="card-pay-info">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-                            <line x1="1" y1="10" x2="23" y2="10"/>
-                        </svg>
-                        <span>Оплатити картою</span>
-                    </div>
                 </div>
-            </div>
+            </form>
 
             <!-- Ukraine Transfer Tab -->
             <div id="ukraine-transfer" class="tab-content">
